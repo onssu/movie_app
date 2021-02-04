@@ -14,11 +14,17 @@ class App extends React.Component{
   };
 
   render(){
-    return <div>
+    return (
+      <div>
       <h1>The number is : {this.state.count}</h1>
       <button onClick={this.add}>Add</button>
       <button onClick={this.minus}>Minus</button>
-      </div>;
+      </div>
+    );
+
+    const { isLoading } = this.state;
+    return <div>{isLoading ? "Loading..." : "We are ready"}</div>
+  
   }
 }
 
