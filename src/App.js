@@ -3,15 +3,15 @@ import Proptypes from 'prop-types';
 
 class App extends React.Component{
   state = {
-    count: 0
-  }
-  add = () => {
-    this.setState(current => ({count: current.count + 1}))
+    isLoading: true,
+    movies: []
   };
 
-  minus = () => {
-    this.setState(current => ({count: current.count - 1}))
-  };
+  componentDidMount(){
+    setTimeout(() => {
+      this.setState({isLoading: false});
+    },6000);
+  }
 
   render(){
     return (
