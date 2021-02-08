@@ -1,5 +1,5 @@
 import React from 'react';
-import Proptypes from 'prop-types';
+import axios from 'axios';
 
 class App extends React.Component{
   state = {
@@ -7,24 +7,18 @@ class App extends React.Component{
     movies: []
   };
 
-  componentDidMount(){
-    setTimeout(() => {
-      this.setState({isLoading: false});
-    },6000);
+  getMovies = async () => {
+    const movies =  await axios.get("https://yts-proxy.nomadcoders1.now.sh/list_movies.json");
+    console.log(movies);
+  }//await async 우린 시간이 필요해 , 항상 짝이 맞아야함
+
+  componentDidMount(){//렌더 되자마자 호출
+    this.getMovies();
   }
 
   render(){
-    return (
-      <div>
-      <h1>The number is : {this.state.count}</h1>
-      <button onClick={this.add}>Add</button>
-      <button onClick={this.minus}>Minus</button>
-      </div>
-    );
-
     const { isLoading } = this.state;
     return <div>{isLoading ? "Loading..." : "We are ready"}</div>
-  
   }
 }
 
