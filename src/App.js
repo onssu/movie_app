@@ -25,7 +25,9 @@ class App extends React.Component {
     let clientHeight = document.documentElement.clientHeight;
 
     if (scrollTop + clientHeight === scrollHeight) {
-      this.setState({ offset: this.state.offset + 1 });
+      setTimeout(() => {
+        this.setState({ offset: this.state.offset + 1 });
+      }, 500);
       this.getMovies();
     }
   };
